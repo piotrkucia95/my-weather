@@ -1,1 +1,8 @@
-<div class="col-lg-8 col-md-10 col-sm-12 col-xs-12" id="map"></div>
+<div>
+    Enter your location:
+    <input type="text" ng-model="currentCountry" ng-hide="locationSet">
+    <span ng-hide="locationSet">{{currentCountry}}</span>
+    <button ng-hide="locationSet">Submit</button>
+    <span ng-show="locationSet">Change location</span>
+    <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12" id="map"></div> 
+</div>
