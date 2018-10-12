@@ -1,0 +1,40 @@
+<nav class="navbar navbar-dark navbar-expand-lg navbar-expand-md">
+		
+        <a class="navbar-brand" href="/home" ng-click="setActive()">
+            <img src="img/homeicon.png" width="60" height="60" class="d-inline-block mr-1" alt=""> 
+            My Weather
+        </a>
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainmenu">
+            
+            <ul class="navbar-nav ml-auto mr-5">
+            
+                <li class="nav-item active">
+                    <a class="nav-link" id="home" href="/home" ng-click="setActive($event)">Home</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/hourly" ng-click="setActive($event)">Hourly</a>
+                </li>
+                               
+                <li class="nav-item">
+                    <a class="nav-link" href="/weekly" ng-click="setActive($event)">Weekly</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/monthly" ng-click="setActive($event)">Monthly</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/about" ng-click="setActive($event)">About</a>
+                </li>
+            
+            </ul>
+        
+        </div>
+    
+    </nav>

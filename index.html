@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myWeatherApp">
+    <head>
+        <base href="/"/>
+        <meta charset="utf-8"/>
+        <meta name="author" content="Piotr Kucia"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>My Weather</title>
+        <meta name="description" content="Welcome to My Weather App"/>
+        <meta name="keywords" content="weather,angularjs,check,climate,rain,sun,sunny,snow,fog,day"/>
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+
+        <link rel="stylesheet" href="style/lib/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="style/lib/leaflet.css" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto:400,700&amp;subset=latin-ext" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+        <link rel="stylesheet" href="style/main.css" type="text/css"/>
+
+        <script src="app/lib/angular.min.js"></script>
+        <script src="app/lib/angular-route.min.js"></script>
+        <script src="app/lib/jquery-3.3.1.min.js"></script>
+        <script src="app/lib/popper.min.js"></script>
+        <script src="app/lib/bootstrap.min.js"></script>
+        <script src="app/lib/leaflet.js"></script>
+        <script src="app/app.js"></script>
+
+    </head>
+    <body>
+
+        <div id="wrapper">
+            <!-- HEADER -->
+            <header ng-include="'views/header.html'" ng-controller="HeaderController"></header>
+
+            <!-- MAIN CONTENT -->
+            <main ng-view></main>
+
+            <!-- FOOTER -->
+            <footer ng-include="'views/footer.html'"></footer>
+        </div>
+
+        <script src="app/controllers.js"></script>
+    </body>
+</html>
