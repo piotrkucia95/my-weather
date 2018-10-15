@@ -10,19 +10,19 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         })
         .when('/hourly', {
             templateUrl: 'views/hourly.html',
-            controller: ''
+            controller: 'HourlyController'
+        })
+        .when('/daily', {
+            templateUrl: 'views/monthly.html',
+            controller: 'DailyController'
         })
         .when('/weekly', {
             templateUrl: 'views/weekly.html',
-            controller: ''
-        })
-        .when('/monthly', {
-            templateUrl: 'views/monthly.html',
-            controller: ''
+            controller: 'WeeklyController'
         })
         .when('/about', {
             templateUrl: 'views/about.html',
-            controller: ''
+            controller: 'AboutController'
         })
         .otherwise({
             redirectTo : '/home'
