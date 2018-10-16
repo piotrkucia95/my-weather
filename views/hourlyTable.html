@@ -1,1 +1,26 @@
-{{currentlyDisplayed | date}}
+<div class="table-responsive"></div>
+    <table class="table w-100 d-block d-md-table">
+        <thead>
+            <tr>
+                <th scope="col">Hour</th>
+                <th scope="col"></th>
+                <th scope="col">Overall</th>
+                <th scope="col">Temperature</th>
+                <th scope="col">Humidity</th>
+                <th scope="col">Wind</th>
+                <th scope="col">Pressure</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="forecast in currentlyDisplayedForecast">
+            <tr>
+                <td>{{forecast.date | date : 'H:mm'}}</td>
+                <td><img ng-src="{{forecast.icon}}"/></td>
+                <td style="text-transform: capitalize">{{forecast.weather[0].description}}</td>
+                <td>{{(forecast.main.temp - 273.15).toFixed(0)}}&deg;C</td>
+                <td>{{forecast.main.humidity}}%</td>
+                <td>{{forecast.wind.speed}} m/s</td>
+                <td>{{forecast.main.pressure}} hPa</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

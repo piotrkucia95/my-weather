@@ -137,3 +137,8 @@ main {
 #hourlyWeatherTable .nav:hover {
     cursor: pointer;
 }
+
+table {
+    overflow: auto;
+}
+

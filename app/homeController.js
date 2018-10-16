@@ -136,5 +136,9 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
         }, 2000);
     }
 
+    $scope.enterPressed = function(event) {
+        if(event.keyCode == 13) $scope.createMapForCountry(event.currentTarget.value);
+    }
+
 
 }]);

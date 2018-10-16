@@ -1,25 +1,25 @@
 <span id="location-info"></span>
 Enter location:
-<input type="text" ng-model="currentCountry">
-<span>{{currentCountry}}</span>
-<button ng-click="createMapForCountry(currentCountry)">Submit</button>
+<input type="text" ng-model="currentLocation" ng-keyup="enterPressed($event)">
+<span>{{currentLocation}}</span>
+<button ng-click="getForecastForLocation(currentLocation)">Submit</button>
 <span>Change location</span>
 
 <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12" id="hourlyWeatherTable">
     <ul class="nav nav-tabs">
-        <li class="nav-item" ng-click="createTableForDate(today)">
+        <li class="nav-item" ng-click="createTableForDate('today', $event)">
             <a class="nav-link active">Today ({{today | date}})</a>
         </li>
-        <li class="nav-item" ng-click="createTableForDate(oneDayForward)">
+        <li class="nav-item" ng-click="createTableForDate('oneDay', $event)">
             <a class="nav-link">{{oneDayForward | date}}</a>
         </li>
-        <li class="nav-item" ng-click="createTableForDate(twoDayForward)">
+        <li class="nav-item" ng-click="createTableForDate('twoDay', $event)">
             <a class="nav-link">{{twoDayForward | date}}</a>
         </li>
-        <li class="nav-item" ng-click="createTableForDate(threeDayForward)">
+        <li class="nav-item" ng-click="createTableForDate('threeDay', $event)">
             <a class="nav-link">{{threeDayForward | date}}</a>
         </li>
-        <li class="nav-item" ng-click="createTableForDate(fourDayForward)">
+        <li class="nav-item" ng-click="createTableForDate('fourDay', $event)">
             <a class="nav-link">{{fourDayForward | date}}</a>
         </li>
     </ul>
