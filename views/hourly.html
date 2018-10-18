@@ -8,19 +8,19 @@ Enter location:
 <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12" id="hourlyWeatherTable">
     <ul class="nav nav-tabs">
         <li class="nav-item" ng-click="createTableForDate('today', $event)">
-            <a class="nav-link active">Today ({{today | date}})</a>
+            <a id="today-nav" class="nav-link active">Today, {{today | date}}</a>
         </li>
         <li class="nav-item" ng-click="createTableForDate('oneDay', $event)">
-            <a class="nav-link">{{oneDayForward | date}}</a>
+            <a class="nav-link">{{oneDayForward | date : 'EEEE, MMM d, y'}}</a>
         </li>
         <li class="nav-item" ng-click="createTableForDate('twoDay', $event)">
-            <a class="nav-link">{{twoDayForward | date}}</a>
+            <a class="nav-link">{{twoDayForward | date : 'EEEE, MMM d, y'}}</a>
         </li>
         <li class="nav-item" ng-click="createTableForDate('threeDay', $event)">
-            <a class="nav-link">{{threeDayForward | date}}</a>
+            <a class="nav-link">{{threeDayForward | date : 'EEEE, MMM d, y'}}</a>
         </li>
         <li class="nav-item" ng-click="createTableForDate('fourDay', $event)">
-            <a class="nav-link">{{fourDayForward | date}}</a>
+            <a class="nav-link">{{fourDayForward | date : 'EEEE, MMM d, y'}}</a>
         </li>
     </ul>
 

@@ -67,6 +67,8 @@ app.controller('HourlyController', ['$scope', '$http', function($scope, $http) {
 
             $scope.currentlyDisplayedForecast = $scope.forecastToday;
             console.log($scope.currentlyDisplayedForecast);
+            $("#hourlyWeatherTable").find('.active').removeClass('active');
+            $('#today-nav').addClass("active");
         });
     }
 
