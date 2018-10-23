@@ -13,7 +13,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
             controller: 'HourlyController'
         })
         .when('/daily', {
-            templateUrl: 'views/monthly.html',
+            templateUrl: 'views/daily.html',
             controller: 'DailyController'
         })
         .when('/weekly', {
