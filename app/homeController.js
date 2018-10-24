@@ -44,6 +44,7 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
 
             var cloudsIcon = L.icon({iconUrl: '../img/weather-icons/clouds.png', iconSize: [20, 20]});
             var cloudySunIcon = L.icon({iconUrl: '../img/weather-icons/cloudy-sun.png', iconSize: [25, 25]});
+            var cloudyMoonIcon = L.icon({iconUrl: '../img/weather-icons/cloudy-moon.png', iconSize: [25, 25]});
             var lightningIcon = L.icon({iconUrl: '../img/weather-icons/lightning.png', iconSize: [20, 20]});
             var moonIcon = L.icon({iconUrl: '../img/weather-icons/moon.png', iconSize: [20, 20]});
             var bigRainIcon = L.icon({iconUrl: '../img/weather-icons/big-rain.png', iconSize: [20, 20]});
@@ -55,8 +56,8 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
             for(let i=0; i<cityList.length; i++) {
                 if(cityList[i].weather[0].icon == '01d') var marker = L.marker([cityList[i].coord.Lat, cityList[i].coord.Lon], {icon: sunIcon});
                 else if(cityList[i].weather[0].icon == '01n') var marker = L.marker([cityList[i].coord.Lat, cityList[i].coord.Lon], {icon: moonIcon});
-                else if(cityList[i].weather[0].icon == '02d' || 
-                        cityList[i].weather[0].icon == '02n') var marker = L.marker([cityList[i].coord.Lat, cityList[i].coord.Lon], {icon: cloudySunIcon});
+                else if(cityList[i].weather[0].icon == '02d') var marker = L.marker([cityList[i].coord.Lat, cityList[i].coord.Lon], {icon: cloudySunIcon});
+                else if(cityList[i].weather[0].icon == '02n') var marker = L.marker([cityList[i].coord.Lat, cityList[i].coord.Lon], {icon: cloudyMoonIcon});
                 else if(cityList[i].weather[0].icon == '03d' || 
                         cityList[i].weather[0].icon == '03n' ||
                         cityList[i].weather[0].icon == '04d' ||

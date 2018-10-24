@@ -1,9 +1,9 @@
 <span id="location-info"></span>
 Enter location:
 <input type="text" ng-model="currentLocation" ng-keyup="enterPressed($event)">
-<span>{{currentLocation}}</span>
 <button ng-click="getForecastForLocation(currentLocation)">Submit</button>
 <span>Change location</span>
+<span>Current weather in {{location}}</span>
 
 <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12" id="hourlyWeatherTable">
     <ul class="nav nav-tabs">
@@ -26,3 +26,5 @@ Enter location:
 
     <div ng-include="'views/hourlyTable.html'"></div> 
 </div>
+
+<div id="snackbar">Location not found!</div>
