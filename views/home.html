@@ -1,8 +1,14 @@
-<span id="location-info"></span>
-Enter country:
-<input type="text" ng-model="currentCountry" ng-keyup="enterPressed($event)">
-<button ng-click="createMapForCountry(currentCountry)">Submit</button>
-<span>Change location</span>
-
-<div class="col-lg-8 col-md-10 col-sm-12 col-xs-12" id="map"></div> 
-<div id="snackbar">Country not found!</div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-padding">
+        <h1 class="text-opacity">Welcome to My Weather!</h1>
+        <span id="location-info"></span>
+        <div class="input-home">
+            <input type="text" ng-model="currentCountry" ng-keyup="enterPressed($event)" placeholder="Enter country">
+            <button ng-click="createMapForCountry(currentCountry)">Submit</button>
+        </div>
+        <span>Change location</span>
+        <div ng-include="'views/hourlyTable.html'"></div> 
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="map"></div> 
+    <div id="snackbar">Country not found!</div>
+</div>

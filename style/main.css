@@ -12,12 +12,28 @@ body {
     font-family: 'Roboto', sans-serif;
     color: white;
     height: 100%;
+    background-size: 100%;
+}
+
+.cloudy-sun-bg {
+    background: url("/img/cloudy-sun-bg.jpg");
+    color: black;
+}
+
+.rain-bg {
+    background: url("/img/rain-bg.jpg");
+    color: white;
+}
+
+.night-bg {
+    background: url("/img/night-bg.jpg");
+    color: white;
 }
 
 #wrapper {
     min-height: 100%;
     position: relative;
-    color: black;
+    background-size: 100%;
 }
 
 nav a, footer a{
@@ -30,6 +46,7 @@ nav a:hover, nav a:hover {
 
 header {
     background-color: black;
+    opacity: 0.1;
 }
 
 .navbar-nav li:hover>.dropdown-menu {
@@ -37,9 +54,9 @@ header {
 }
 
 .navbar {
-    padding-top: 15px;
-    min-height: 85px;
-    font-size: 120%;
+    padding-top: 20px;
+    min-height: 150px;
+    font-size: 200%;
 }
 
 .navbar-brand {
@@ -56,6 +73,7 @@ footer {
     bottom: 0;
     width: 100%;
     background-color: black;
+    opacity: 0.1;
     color: white;
     text-align: center;
     min-height: 30px;
@@ -69,8 +87,12 @@ footer ul li {
 }
 
 main {
-    color: black;
-    padding: 5% 0;
+    padding: 2% 5%;
+}
+
+main h1 {
+    font-weight: bold;
+    font-size: 350%;
 }
 
 .active {
@@ -80,8 +102,25 @@ main {
 
 #map, #hourlyWeatherTable, #dailyTable { 
     width: 100%;
-    height: 60vh;
-    margin: 0 auto;
+    height: 65vh;
+    /* margin: 0 auto; */
+}
+
+.input-home {
+    width: 100%;
+}
+
+.input-home input {
+    width: 70%;
+}
+
+.input-home button {
+    width: 28%;
+    float: right;
+}
+
+main table {
+    font-size: 0.9em;
 }
 
 .my-custom-icon {
@@ -91,23 +130,6 @@ main {
 }
 
 #snackbar {
-<<<<<<< HEAD
-    visibility: hidden; /* Hidden by default. Visible on click */
-    min-width: 250px; /* Set a default minimum width */
-    margin-left: -125px; /* Divide value of min-width by 2 */
-    background-color: #FF3333; /* Black background color */
-    color: #fff; /* White text color */
-    text-align: center; /* Centered text */
-    border-radius: 2px; /* Rounded borders */
-    padding: 16px; /* Padding */
-    position: fixed; /* Sit on top of the screen */
-    z-index: 1; /* Add a z-index if needed */
-    left: 50%; /* Center the snackbar */
-    top: 100px; /* 30px from the bottom */
-}
-
-/* Show the snackbar when clicking on a button (class added with JavaScript) */
-=======
     visibility: hidden;
     min-width: 250px;
     margin-left: -125px;
@@ -122,7 +144,6 @@ main {
     top: 100px;
 }
 
->>>>>>> master
 #snackbar.show {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 1.5s;
@@ -159,5 +180,24 @@ table {
 
 .capitalize-first::first-letter {
     text-transform: capitalize;
+}
+
+/* The starting CSS styles for the enter animation */
+main.ng-enter {
+    transition: 0.8s linear all;
+    opacity: 0;
+}
+  
+/* The finishing CSS styles for the enter animation */
+main.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+.text-opacity {
+    opacity: 0.7;
+}
+
+.col-padding {
+    padding-right: 50px;
 }
 

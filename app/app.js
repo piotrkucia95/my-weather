@@ -1,4 +1,4 @@
-var app = angular.module('myWeatherApp', ['ngRoute']);
+var app = angular.module('myWeatherApp', ['ngRoute', 'ngAnimate']);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
@@ -15,10 +15,6 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         .when('/daily', {
             templateUrl: 'views/daily.html',
             controller: 'DailyController'
-        })
-        .when('/weekly', {
-            templateUrl: 'views/weekly.html',
-            controller: 'WeeklyController'
         })
         .when('/about', {
             templateUrl: 'views/about.html',

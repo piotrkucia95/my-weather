@@ -2,11 +2,15 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
     
     navigator.geolocation.getCurrentPosition(function(position) {
         $('#location-info').text('');
-        $scope.latitude = position.coords.latitude;
-        $scope.longitude = position.coords.longitude;
-        $http.get('http://api.geonames.org/findNearbyPlaceNameJSON?lat='+position.coords.latitude+'&lng='+position.coords.longitude+'&username=piter447')
-        .then(function(result) {
-            $scope.createMapForCountry(result.data.geonames[0].countryName);
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+
+        $scope.getForecast('http://api.openweathermap.org/data/2.5/forecast?lat=' + latitude +
+                              '&lon='+longitude +
+                              '&appid=8d7dcb1a10c7f8249561e9a4a92d5e7c');
+        $http.get('http://api.geonames.org/findNearbyPlaceNameJSON?lat='+latitude+'&lng='+longitude+'&username=piter447')
+        .then(function(response) {            
+            $scope.createMapForCountry(response.data.geonames[0].countryName);
         });
     });
     
@@ -41,6 +45,25 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
         .then(function(response) {
             $scope.cities = response.data;
             var cityList = $scope.cities.list;
+
+            if(cityList[0].weather[0].icon == '01d') $scope.switchBackground('rain-bg');
+            else if(cityList[0].weather[0].icon == '01n') $scope.switchBackground('rain-bg');
+            else if(cityList[0].weather[0].icon == '02d') $scope.switchBackground('rain-bg');
+            else if(cityList[0].weather[0].icon == '02n') $scope.switchBackground('rain-bg');
+            else if(cityList[0].weather[0].icon == '03d' || 
+                    cityList[0].weather[0].icon == '03n' ||
+                    cityList[0].weather[0].icon == '04d' ||
+                    cityList[0].weather[0].icon == '04n') $scope.switchBackground('rain-bg');
+            else if(cityList[0].weather[0].icon == '09d' || 
+                    cityList[0].weather[0].icon == '09n') $scope.switchBackground('rain-bg');
+            else if(cityList[0].weather[0].icon == '10d' || 
+                    cityList[0].weather[0].icon == '10n') $scope.switchBackground('rain-bg');
+            else if(cityList[0].weather[0].icon == '11d' || 
+                    cityList[0].weather[0].icon == '11n') $scope.switchBackground('rain-bg');
+            else if(cityList[0].weather[0].icon == '13d'|| 
+                    cityList[0].weather[0].icon == '13n') $scope.switchBackground('rain-bg');
+            else if(cityList[0].weather[0].icon == '50d'|| 
+                    cityList[0].weather[0].icon == '50n') $scope.switchBackground('rain-bg');
 
             var cloudsIcon = L.icon({iconUrl: '../img/weather-icons/clouds.png', iconSize: [20, 20]});
             var cloudySunIcon = L.icon({iconUrl: '../img/weather-icons/cloudy-sun.png', iconSize: [25, 25]});
@@ -82,6 +105,43 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
                                                    '<i class="fas fa-weight"></i> Pressure: <i>'+cityList[i].main.pressure +' hPa</i>');
             }
         });
+    }
+
+    $scope.getForecast = function(URL) {
+        $scope.currentlyDisplayedForecast = [];
+
+        $http.get(URL)
+        .then(function(response) {
+            $scope.location = response.data.city.name;
+            $scope.forecastArray = response.data.list;
+            for(let i=0; i<$scope.forecastArray.length; i++) {
+
+                if($scope.forecastArray[i].weather[0].icon == '01d') $scope.forecastArray[i].icon = '../img/weather-icons/sun.png';
+                else if($scope.forecastArray[i].weather[0].icon == '01n') $scope.forecastArray[i].icon = '../img/weather-icons/moon.png';
+                else if($scope.forecastArray[i].weather[0].icon == '02d') $scope.forecastArray[i].icon = '../img/weather-icons/cloudy-sun.png';
+                else if($scope.forecastArray[i].weather[0].icon == '02n') $scope.forecastArray[i].icon = '../img/weather-icons/cloudy-moon.png';
+                else if($scope.forecastArray[i].weather[0].icon == '03d' || 
+                        $scope.forecastArray[i].weather[0].icon == '03n' ||
+                        $scope.forecastArray[i].weather[0].icon == '04d' ||
+                        $scope.forecastArray[i].weather[0].icon == '04n') $scope.forecastArray[i].icon = '../img/weather-icons/clouds.png';
+                else if($scope.forecastArray[i].weather[0].icon == '09d' || 
+                        $scope.forecastArray[i].weather[0].icon == '09n') $scope.forecastArray[i].icon = '../img/weather-icons/big-rain.png';
+                else if($scope.forecastArray[i].weather[0].icon == '10d' || 
+                        $scope.forecastArray[i].weather[0].icon == '10n') $scope.forecastArray[i].icon = '../img/weather-icons/small-rain.png';
+                else if($scope.forecastArray[i].weather[0].icon == '11d' || 
+                        $scope.forecastArray[i].weather[0].icon == '11n') $scope.forecastArray[i].icon = '../img/weather-icons/lightning.png';
+                else if($scope.forecastArray[i].weather[0].icon == '13d'|| 
+                        $scope.forecastArray[i].weather[0].icon == '13n') $scope.forecastArray[i].icon = '../img/weather-icons/snow.png';
+                else if($scope.forecastArray[i].weather[0].icon == '50d'|| 
+                        $scope.forecastArray[i].weather[0].icon == '50n') $scope.forecastArray[i].icon = '../img/weather-icons/fog.png';
+
+                var dt = new Date($scope.forecastArray[i].dt_txt);
+                $scope.forecastArray[i].date = dt;
+                $scope.currentlyDisplayedForecast.push($scope.forecastArray[i]);
+                if($scope.currentlyDisplayedForecast.length == 5) break;
+            }
+        })
+        .catch(function(error) {});
     }
     
     $scope.removeMarkers = function(map) {
@@ -128,6 +188,10 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
             $scope.getWeatherInfo($scope.map, bounds._southWest.lng, bounds._southWest.lat, 
                                   bounds._northEast.lng, bounds._northEast.lat, $scope.map._zoom);
         });
+    }
+
+    $scope.switchBackground = function(bgClass) {
+        $('#wrapper').removeClass().addClass(bgClass);
     }
 
     $scope.showToast = function() {

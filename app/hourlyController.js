@@ -89,7 +89,6 @@ app.controller('HourlyController', ['$scope', '$http', function($scope, $http) {
     $scope.enterPressed = function(event) {
         if(event.keyCode == 13) $scope.getForecastForLocation(event.currentTarget.value);
     }
-<<<<<<< HEAD
     
     $scope.showToast = function() {
         $("#snackbar").addClass("show");   
@@ -98,6 +97,4 @@ app.controller('HourlyController', ['$scope', '$http', function($scope, $http) {
         }, 2000);
     }
 
-=======
->>>>>>> master
 }]);
