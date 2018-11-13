@@ -84,6 +84,10 @@ header {
     font-size: 200%;
 }
 
+.dynamic-margin-right {
+    margin-right: 2em;
+}
+
 .text-opacity {
     opacity: 0.8;
 }
@@ -314,6 +318,10 @@ main.ng-enter.ng-enter-active {
         font-size: 150%;
     }
 
+    .dynamic-margin-right {
+        margin-right: auto;
+    }
+
     .header-margin {
         font-size: 3rem;
     }
@@ -324,6 +332,16 @@ main.ng-enter.ng-enter-active {
 
     .about {
         font-size: 1.2rem;
+    }
+
+    
+    .input-home input {
+        width: 60%;
+    }
+
+    .input-home button {
+        width: 38%;
+        float: right;
     }
 }
 
