@@ -11,7 +11,12 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
         .then(function(response) {            
             $scope.createMapForCountry(response.data.geonames[0].countryName);
         }).catch(function(err) {
-            $scope.createMapForCountry('Poland');
+            $http.get('http://secure.geonames.org/findNearbyPlaceNameJSON?lat='+latitude+'&lng='+longitude+'&username=piter447')
+            .then(function(response) {            
+                $scope.createMapForCountry(response.data.geonames[0].countryName);
+            }).catch(function(err) {
+                $scope.createMapForCountry('Poland');
+            });
         });
     });
 
