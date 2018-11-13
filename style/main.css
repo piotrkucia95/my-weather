@@ -15,13 +15,8 @@ body {
     background-size: 100%;
 }
 
-.cloudy-sun-bg {
-    background: url("/img/cloudy-sun-bg.jpg");
-    color: black;
-}
-
-.rain-bg {
-    background: url("/img/rain-bg.jpg");
+.sun-bg {
+    background: url("/img/sun-bg.jpg");
     color: white;
 }
 
@@ -30,10 +25,41 @@ body {
     color: white;
 }
 
+.cloudy-sun-bg {
+    background: url("/img/cloudy-sun-bg.jpg");
+    color: white;
+}
+
+.clouds-bg {
+    background: url("/img/clouds-bg.jpg");
+    color: white;
+}
+
+.rain-bg {
+    background: url("/img/rain-bg.jpg");
+    color: white;
+}
+
+.lightning-bg {
+    background: url("/img/lightning-bg.jpg");
+    color: white;
+}
+
+.snow-bg {
+    background: url("/img/snow-bg.jpg");
+    color: black;
+}
+
+.fog-bg {
+    background: url("/img/fog-bg.jpg");
+    color: black;
+}
+
 #wrapper {
     min-height: 100%;
     position: relative;
-    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 nav a, footer a{
@@ -45,8 +71,7 @@ nav a:hover, nav a:hover {
 }
 
 header {
-    background-color: black;
-    opacity: 0.1;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .navbar-nav li:hover>.dropdown-menu {
@@ -57,6 +82,15 @@ header {
     padding-top: 20px;
     min-height: 150px;
     font-size: 200%;
+}
+
+.text-opacity {
+    opacity: 0.8;
+}
+
+#hourlyWeatherTable .active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: inherit;
 }
 
 .navbar-brand {
@@ -72,13 +106,16 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: black;
-    opacity: 0.1;
+    background-color: rgba(0, 0, 0, 0.1);
     color: white;
     text-align: center;
     min-height: 30px;
     padding: 15px 0 0px 0;
     font-size: 80%;
+}
+
+footer a:hover {
+    color: inherit;
 }
 
 footer ul li {
@@ -87,12 +124,13 @@ footer ul li {
 }
 
 main {
+    min-height: calc(100vh - 180px);
     padding: 2% 5%;
 }
 
 main h1 {
     font-weight: bold;
-    font-size: 350%;
+    font-size: 450%;
 }
 
 .active {
@@ -100,10 +138,12 @@ main h1 {
     font-weight: bold;
 }
 
-#map, #hourlyWeatherTable, #dailyTable { 
+#map { 
     width: 100%;
-    height: 65vh;
-    /* margin: 0 auto; */
+    height: 40vh;
+    margin-bottom: 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
 }
 
 .input-home {
@@ -142,12 +182,31 @@ main table {
     z-index: 1;
     left: 50%;
     top: 100px;
+    border-radius: 10px;
+    border: 1px solid black;
 }
 
 #snackbar.show {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 1.5s;
     animation: fadein 0.5s, fadeout 0.5s 1.5s;
+}
+
+.input-styling {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+.input-styling::placeholder {
+    font-style: italic;
+}
+
+.button-styling {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    background-color: #ABEBC6;
 }
 
 @-webkit-keyframes fadein {
@@ -182,22 +241,93 @@ table {
     text-transform: capitalize;
 }
 
-/* The starting CSS styles for the enter animation */
 main.ng-enter {
     transition: 0.8s linear all;
     opacity: 0;
 }
   
-/* The finishing CSS styles for the enter animation */
 main.ng-enter.ng-enter-active {
     opacity: 1;
 }
 
-.text-opacity {
-    opacity: 0.7;
+.header-margin {
+    margin-bottom: 20px;
+}
+
+.margin-bottom {
+    margin-bottom: 5vh;
 }
 
 .col-padding {
     padding-right: 50px;
 }
 
+.subpage-header {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.subpage-form {
+    width: 100%;
+}
+
+.subpage-form input {
+    width: 60%;
+}
+
+.subpage-form button {
+    width: 38%;
+}
+
+.about {
+    font-size: 1.5em;
+}
+
+.about-icon a {
+    font-size: 5rem;
+    color: inherit;
+    transition: all 0.1s linear;
+}
+
+.about-icon a:hover {
+    font-size: 5.4rem;
+}
+
+@media only screen and (max-width: 992px) {
+    .col-padding {
+        padding-right: 0px;
+    }
+
+    .margin-bottom {
+        margin-bottom: 12vh;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        min-height: 100px;
+        font-size: 150%;
+    }
+
+    .header-margin {
+        font-size: 3rem;
+    }
+
+    .subheader {
+        font-size: 1.3rem;
+    }
+
+    .about {
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .navbar {
+        font-size: 100%;
+    }
+
+    .navbar img {
+        transform: scale(0.7, 0.7);
+    }
+}

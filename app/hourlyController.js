@@ -7,20 +7,14 @@ app.controller('HourlyController', ['$scope', '$http', function($scope, $http) {
     $scope.fourDayForward = new Date().setDate($scope.today.getDate() + 4);
 
     navigator.geolocation.getCurrentPosition(function(position) {
-        $('#location-info').text('');
         $scope.latitude = position.coords.latitude;
         $scope.longitude = position.coords.longitude;
         $scope.getWeatherInfo('http://api.openweathermap.org/data/2.5/forecast?lat=' + position.coords.latitude +
                               '&lon='+position.coords.longitude +
                               '&appid=8d7dcb1a10c7f8249561e9a4a92d5e7c');
     });
-    
-    if(navigator.geolocation != {}) {
-        $('#location-info').text("Turn on your browser's geolocation or enter your location!");
-    }
 
     $scope.getForecastForLocation = function(location) {
-        $('#location-info').text('');
         $scope.getWeatherInfo('http://api.openweathermap.org/data/2.5/forecast?q=' + location +
                               '&appid=8d7dcb1a10c7f8249561e9a4a92d5e7c');
     }

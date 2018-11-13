@@ -1,30 +1,36 @@
-<span id="location-info"></span>
-Enter location:
-<input type="text" ng-model="currentLocation" ng-keyup="enterPressed($event)">
-<button ng-click="getForecastForLocation(currentLocation)">Submit</button>
-<span>Change location</span>
-<span>Current weather in {{location}}</span>
+<div class="margin-bottom text-center">
+    <div class="subpage-header mb-3 text-opacity">Current weather in {{location}}</div>
+    <div class="row mb-3">
+        <div class="col-lg-3 col-md-2"></div>
+        <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+            <div class="subpage-form">
+                <input type="text" class="input-styling mb-2" ng-model="currentLocation" placeholder="Enter location" ng-keyup="enterPressed($event)">
+                <button class="button-styling" ng-click="getForecastForLocation(currentLocation)">Find location!</button>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-2"></div>
+    </div>
+    <div class="col-12" id="hourlyWeatherTable">
+        <ul class="nav nav-tabs">
+            <li class="nav-item" ng-click="createTableForDate('today', $event)">
+                <a id="today-nav" class="nav-link active">Today</a>
+            </li>
+            <li class="nav-item" ng-click="createTableForDate('oneDay', $event)">
+                <a class="nav-link">{{oneDayForward | date : 'MMM d, y'}}</a>
+            </li>
+            <li class="nav-item" ng-click="createTableForDate('twoDay', $event)">
+                <a class="nav-link">{{twoDayForward | date : 'MMM d, y'}}</a>
+            </li>
+            <li class="nav-item" ng-click="createTableForDate('threeDay', $event)">
+                <a class="nav-link">{{threeDayForward | date : 'MMM d, y'}}</a>
+            </li>
+            <li class="nav-item" ng-click="createTableForDate('fourDay', $event)">
+                <a class="nav-link">{{fourDayForward | date : 'MMM d, y'}}</a>
+            </li>
+        </ul>
 
-<div class="col-lg-8 col-md-10 col-sm-12 col-xs-12" id="hourlyWeatherTable">
-    <ul class="nav nav-tabs">
-        <li class="nav-item" ng-click="createTableForDate('today', $event)">
-            <a id="today-nav" class="nav-link active">Today</a>
-        </li>
-        <li class="nav-item" ng-click="createTableForDate('oneDay', $event)">
-            <a class="nav-link">{{oneDayForward | date : 'MMM d, y'}}</a>
-        </li>
-        <li class="nav-item" ng-click="createTableForDate('twoDay', $event)">
-            <a class="nav-link">{{twoDayForward | date : 'MMM d, y'}}</a>
-        </li>
-        <li class="nav-item" ng-click="createTableForDate('threeDay', $event)">
-            <a class="nav-link">{{threeDayForward | date : 'MMM d, y'}}</a>
-        </li>
-        <li class="nav-item" ng-click="createTableForDate('fourDay', $event)">
-            <a class="nav-link">{{fourDayForward | date : 'MMM d, y'}}</a>
-        </li>
-    </ul>
-
-    <div ng-include="'views/hourlyTable.html'"></div> 
+        <div ng-include="'views/hourlyTable.html'"></div> 
+    </div>
 </div>
 
 <div id="snackbar">Location not found!</div>

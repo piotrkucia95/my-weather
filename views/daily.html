@@ -1,35 +1,41 @@
-<span id="location-info"></span>
-Enter location:
-<input type="text" ng-model="currentLocation" ng-keyup="enterPressed($event)">
-<span>{{currentLocation}}</span>
-<button ng-click="getForecastForLocation(currentLocation)">Submit</button>
-<span>Change location</span>
-<span>Current weather in {{location}}</span>
+<div class="margin-bottom text-center">
+    <div class="subpage-header mb-3 text-opacity">Current weather in {{location}}</div>
+    <div class="row mb-3">
+        <div class="col-lg-3 col-md-2"></div>
+        <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+            <div class="subpage-form">
+                <input type="text" class="subpage-input input-styling mb-2" ng-model="currentLocation" placeholder="Enter location" ng-keyup="enterPressed($event)">
+                <button class="subpage-submit button-styling" ng-click="getForecastForLocation(currentLocation)">Find location!</button>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-2"></div>
+    </div>
 
-<div class="col-lg-8 col-md-10 col-sm-12 col-xs-12" id="dailyTable">
-    <div class="table-responsive"></div>
-        <table class="table w-100 d-block d-md-table">
-            <thead>
-                <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col"></th>
-                    <th scope="col">Overall</th>
-                    <th scope="col">Temperature</th>
-                    <th scope="col">Humidity</th>
-                    <th scope="col">Wind</th>
-                </tr>
-            </thead>
-            <tbody ng-repeat="forecast in forecastArray">
-                <tr>
-                    <td>{{(today.getDate() == forecast.new_date.getDate() ? 'Today' : forecast.new_date | date : 'MMM d, y')}}</td>
-                    <td><img ng-src="{{forecast.icon}}"/></td>
-                    <td>{{forecast.day.condition.text}}</td>
-                    <td>{{forecast.day.avgtemp_c.toFixed(0)}}&deg;C</td>
-                    <td>{{forecast.day.avghumidity.toFixed(0)}}%</td>
-                    <td>~{{(forecast.day.maxwind_kph/3.6).toFixed(0)}}m/s</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="col-12" id="dailyTable">
+        <div class="table-responsive"></div>
+            <table class="table w-100 d-block d-md-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col"></th>
+                        <th scope="col">Overall</th>
+                        <th scope="col">Temperature</th>
+                        <th scope="col">Humidity</th>
+                        <th scope="col">Wind</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="forecast in forecastArray">
+                    <tr>
+                        <td>{{(today.getDate() == forecast.new_date.getDate() ? 'Today' : forecast.new_date | date : 'MMM d, y')}}</td>
+                        <td><img ng-src="{{forecast.icon}}"/></td>
+                        <td>{{forecast.day.condition.text}}</td>
+                        <td>{{forecast.day.avgtemp_c.toFixed(0)}}&deg;C</td>
+                        <td>{{forecast.day.avghumidity.toFixed(0)}}%</td>
+                        <td>~{{(forecast.day.maxwind_kph/3.6).toFixed(0)}}m/s</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 

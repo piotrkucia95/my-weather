@@ -3,19 +3,13 @@ app.controller('DailyController', ['$scope', '$http', function($scope, $http) {
     $scope.today = new Date();
 
     navigator.geolocation.getCurrentPosition(function(position) {
-        $('#location-info').text('');
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
         $scope.getWeatherInfo('http://api.apixu.com/v1/forecast.json?key=3df79fac1299461c83f83808182310&days=10&' +
                               'q=' + latitude + ',' + longitude);
     });
 
-    if(navigator.geolocation != {}) {
-        $('#location-info').text("Turn on your browser's geolocation or enter your location!");
-    }
-
     $scope.getForecastForLocation = function(location) {
-        $('#location-info').text('');
         $scope.getWeatherInfo('http://api.apixu.com/v1/forecast.json?key=3df79fac1299461c83f83808182310&days=7&' +
                               'q=' + location); 
     }

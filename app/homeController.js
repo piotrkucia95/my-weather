@@ -1,7 +1,6 @@
 app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
     
     navigator.geolocation.getCurrentPosition(function(position) {
-        $('#location-info').text('');
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
 
@@ -13,14 +12,8 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
             $scope.createMapForCountry(response.data.geonames[0].countryName);
         });
     });
-    
-    if(navigator.geolocation != {}) {
-        $('#location-info').text("Turn on your browser's geolocation or enter your location!");
-    }
 
-    $scope.createMapForCountry = function(countryName) {   
-        $('#location-info').text('');
-        
+    $scope.createMapForCountry = function(countryName) {         
         $http.get('https://restcountries.eu/rest/v2/name/'+countryName)
         .then(function(response) {
             var countryObject = response.data[0];
@@ -45,25 +38,6 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
         .then(function(response) {
             $scope.cities = response.data;
             var cityList = $scope.cities.list;
-
-            if(cityList[0].weather[0].icon == '01d') $scope.switchBackground('rain-bg');
-            else if(cityList[0].weather[0].icon == '01n') $scope.switchBackground('rain-bg');
-            else if(cityList[0].weather[0].icon == '02d') $scope.switchBackground('rain-bg');
-            else if(cityList[0].weather[0].icon == '02n') $scope.switchBackground('rain-bg');
-            else if(cityList[0].weather[0].icon == '03d' || 
-                    cityList[0].weather[0].icon == '03n' ||
-                    cityList[0].weather[0].icon == '04d' ||
-                    cityList[0].weather[0].icon == '04n') $scope.switchBackground('rain-bg');
-            else if(cityList[0].weather[0].icon == '09d' || 
-                    cityList[0].weather[0].icon == '09n') $scope.switchBackground('rain-bg');
-            else if(cityList[0].weather[0].icon == '10d' || 
-                    cityList[0].weather[0].icon == '10n') $scope.switchBackground('rain-bg');
-            else if(cityList[0].weather[0].icon == '11d' || 
-                    cityList[0].weather[0].icon == '11n') $scope.switchBackground('rain-bg');
-            else if(cityList[0].weather[0].icon == '13d'|| 
-                    cityList[0].weather[0].icon == '13n') $scope.switchBackground('rain-bg');
-            else if(cityList[0].weather[0].icon == '50d'|| 
-                    cityList[0].weather[0].icon == '50n') $scope.switchBackground('rain-bg');
 
             var cloudsIcon = L.icon({iconUrl: '../img/weather-icons/clouds.png', iconSize: [20, 20]});
             var cloudySunIcon = L.icon({iconUrl: '../img/weather-icons/cloudy-sun.png', iconSize: [25, 25]});
@@ -114,8 +88,27 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
         .then(function(response) {
             $scope.location = response.data.city.name;
             $scope.forecastArray = response.data.list;
-            for(let i=0; i<$scope.forecastArray.length; i++) {
 
+                if($scope.forecastArray[0].weather[0].icon == '01d') $scope.switchBackground('sun-bg');
+                else if($scope.forecastArray[0].weather[0].icon == '01n') $scope.switchBackground('night-bg');
+                else if($scope.forecastArray[0].weather[0].icon == '02d') $scope.switchBackground('cloudy-sun-bg');
+                else if($scope.forecastArray[0].weather[0].icon == '02n') $scope.switchBackground('night-bg');
+                else if($scope.forecastArray[0].weather[0].icon == '03d' || 
+                        $scope.forecastArray[0].weather[0].icon == '03n' ||
+                        $scope.forecastArray[0].weather[0].icon == '04d' ||
+                        $scope.forecastArray[0].weather[0].icon == '04n') $scope.switchBackground('clouds-bg');
+                else if($scope.forecastArray[0].weather[0].icon == '09d' || 
+                        $scope.forecastArray[0].weather[0].icon == '09n') $scope.switchBackground('rain-bg');
+                else if($scope.forecastArray[0].weather[0].icon == '10d' || 
+                        $scope.forecastArray[0].weather[0].icon == '10n') $scope.switchBackground('rain-bg');
+                else if($scope.forecastArray[0].weather[0].icon == '11d' || 
+                        $scope.forecastArray[0].weather[0].icon == '11n') $scope.switchBackground('lightning-bg');
+                else if($scope.forecastArray[0].weather[0].icon == '13d'|| 
+                        $scope.forecastArray[0].weather[0].icon == '13n') $scope.switchBackground('snow-bg');
+                else if($scope.forecastArray[0].weather[0].icon == '50d'|| 
+                        $scope.forecastArray[0].weather[0].icon == '50n') $scope.switchBackground('fog-bg');
+
+            for(let i=0; i<$scope.forecastArray.length; i++) {
                 if($scope.forecastArray[i].weather[0].icon == '01d') $scope.forecastArray[i].icon = '../img/weather-icons/sun.png';
                 else if($scope.forecastArray[i].weather[0].icon == '01n') $scope.forecastArray[i].icon = '../img/weather-icons/moon.png';
                 else if($scope.forecastArray[i].weather[0].icon == '02d') $scope.forecastArray[i].icon = '../img/weather-icons/cloudy-sun.png';
