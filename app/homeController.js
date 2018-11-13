@@ -7,11 +7,11 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
         $scope.getForecast('http://api.openweathermap.org/data/2.5/forecast?lat=' + latitude +
                               '&lon='+longitude +
                               '&appid=8d7dcb1a10c7f8249561e9a4a92d5e7c');
-        $http.get('http://api.geonames.org/findNearbyPlaceNameJSON?lat='+latitude+'&lng='+longitude+'&username=piter447')
+        $http.get('http://secure.geonames.org/findNearbyPlaceNameJSON?lat='+latitude+'&lng='+longitude+'&username=piter447')
         .then(function(response) {            
             $scope.createMapForCountry(response.data.geonames[0].countryName);
         }).catch(function(err) {
-            $http.get('http://secure.geonames.org/findNearbyPlaceNameJSON?lat='+latitude+'&lng='+longitude+'&username=piter447')
+            $http.get('http://api.geonames.org/findNearbyPlaceNameJSON?lat='+latitude+'&lng='+longitude+'&username=piter447')
             .then(function(response) {            
                 $scope.createMapForCountry(response.data.geonames[0].countryName);
             }).catch(function(err) {
