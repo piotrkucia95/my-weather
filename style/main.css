@@ -209,6 +209,11 @@ main table {
     background-color: #ABEBC6;
 }
 
+.button-styling:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
 @-webkit-keyframes fadein {
     from {top: 0; opacity: 0;} 
     to {top: 100px; opacity: 1;}
