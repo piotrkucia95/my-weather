@@ -6,6 +6,8 @@ app.controller('HourlyController', ['$scope', '$http', function($scope, $http) {
     $scope.threeDayForward = new Date().setDate($scope.today.getDate() + 3);
     $scope.fourDayForward = new Date().setDate($scope.today.getDate() + 4);
 
+    $scope.getWeatherInfo('http://api.openweathermap.org/data/2.5/forecast?q=Krakow&appid=8d7dcb1a10c7f8249561e9a4a92d5e7c');
+
     navigator.geolocation.getCurrentPosition(function(position) {
         $scope.latitude = position.coords.latitude;
         $scope.longitude = position.coords.longitude;

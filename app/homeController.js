@@ -1,5 +1,11 @@
 app.controller('HomeController', ['$scope', '$http', '$window', function($scope, $http, $window) {
     
+    if($window.innerWidth < 768) {
+        alert("Turn on your GPS and reload page to use the page optimally.");
+    }
+
+    $scope.createMapForCountry('Poland');
+
     navigator.geolocation.getCurrentPosition(function(position) {
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
@@ -19,10 +25,6 @@ app.controller('HomeController', ['$scope', '$http', '$window', function($scope,
             });
         });
     });
-
-    if($window.innerWidth < 768) {
-        alert("Turn on your GPS and reload page to use the page optimally.");
-    }
 
     $scope.createMapForCountry = function(countryName) {         
         $http.get('https://restcountries.eu/rest/v2/name/'+countryName)
