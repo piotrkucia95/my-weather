@@ -8,7 +8,7 @@ app.controller('DailyController', ['$scope', '$http', function($scope, $http) {
         $scope.getWeatherInfo('http://api.apixu.com/v1/forecast.json?key=3df79fac1299461c83f83808182310&days=10&' +
                               'q=' + latitude + ',' + longitude);
     }, function(error) {
-        $scope.getWeatherInfo('http://api.apixu.com/v1/forecast.json?key=3df79fac1299461c83f83808182310&days=7&q=Cracow');
+        $scope.getWeatherInfo('http://api.apixu.com/v1/forecast.json?key=3df79fac1299461c83f83808182310&days=7&q=Warsaw');
     });
 
     $scope.getForecastForLocation = function(location) {
