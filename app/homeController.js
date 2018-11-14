@@ -20,7 +20,7 @@ app.controller('HomeController', ['$scope', '$http', '$window', function($scope,
         });
     });
 
-    if(!($window.innerWidth < 768)) {
+    if($window.innerWidth < 768) {
         alert("Turn on your GPS and reload page to use the page optimally.");
     }
 
