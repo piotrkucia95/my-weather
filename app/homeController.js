@@ -20,6 +20,10 @@ app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
         });
     });
 
+    if(!(screen.width < 768)) {
+        alert("Turn on your GPS and reload page to use the page optimally.");
+    }
+
     $scope.createMapForCountry = function(countryName) {         
         $http.get('https://restcountries.eu/rest/v2/name/'+countryName)
         .then(function(response) {

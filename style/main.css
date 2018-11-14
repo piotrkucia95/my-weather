@@ -129,7 +129,7 @@ footer ul li {
 
 main {
     min-height: calc(100vh - 180px);
-    padding: 2% 5% 8% 5%;
+    padding: 2% 5% 4% 5%;
 }
 
 main h1 {
@@ -264,7 +264,7 @@ main.ng-enter.ng-enter-active {
 }
 
 .margin-bottom {
-    margin-bottom: 5vh;
+    margin-bottom: 2vh;
 }
 
 .col-padding {
@@ -308,7 +308,7 @@ main.ng-enter.ng-enter-active {
     }
 
     .margin-bottom {
-        margin-bottom: 12vh;
+        margin-bottom: 10vh;
     }
 }
 
@@ -333,7 +333,6 @@ main.ng-enter.ng-enter-active {
     .about {
         font-size: 1.2rem;
     }
-
     
     .input-home input {
         width: 60%;
