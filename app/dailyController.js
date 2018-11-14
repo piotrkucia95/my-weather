@@ -2,13 +2,13 @@ app.controller('DailyController', ['$scope', '$http', function($scope, $http) {
 
     $scope.today = new Date();
 
-    $scope.getWeatherInfo('http://api.apixu.com/v1/forecast.json?key=3df79fac1299461c83f83808182310&days=7&q=Cracow'); 
-
     navigator.geolocation.getCurrentPosition(function(position) {
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
         $scope.getWeatherInfo('http://api.apixu.com/v1/forecast.json?key=3df79fac1299461c83f83808182310&days=10&' +
                               'q=' + latitude + ',' + longitude);
+    }, function(error) {
+        $scope.getWeatherInfo('http://api.apixu.com/v1/forecast.json?key=3df79fac1299461c83f83808182310&days=7&q=Cracow');
     });
 
     $scope.getForecastForLocation = function(location) {

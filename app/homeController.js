@@ -4,8 +4,6 @@ app.controller('HomeController', ['$scope', '$http', '$window', function($scope,
         alert("Turn on your GPS and reload page to use the page optimally.");
     }
 
-    $scope.createMapForCountry('Poland');
-
     navigator.geolocation.getCurrentPosition(function(position) {
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
@@ -24,6 +22,9 @@ app.controller('HomeController', ['$scope', '$http', '$window', function($scope,
                 $scope.createMapForCountry('Poland');
             });
         });
+    }, function(error) {
+        $scope.createMapForCountry('Poland');
+        $scope.getForecast('http://api.openweathermap.org/data/2.5/forecast?q=Krakow&appid=8d7dcb1a10c7f8249561e9a4a92d5e7c');
     });
 
     $scope.createMapForCountry = function(countryName) {         
@@ -210,6 +211,5 @@ app.controller('HomeController', ['$scope', '$http', '$window', function($scope,
     $scope.enterPressed = function(event) {
         if(event.keyCode == 13) $scope.createMapForCountry(event.currentTarget.value);
     }
-
 
 }]);
