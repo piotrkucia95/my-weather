@@ -1,4 +1,4 @@
-app.controller('HomeController', ['$scope', '$http', function($scope, $http) {
+app.controller('HomeController', ['$scope', '$http', '$window', function($scope, $http, $window) {
     
     navigator.geolocation.getCurrentPosition(function(position) {
         var latitude = position.coords.latitude;
