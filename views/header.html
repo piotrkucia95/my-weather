@@ -13,7 +13,7 @@
             
             <ul class="navbar-nav ml-auto dynamic-margin-right">
             
-                <li class="{{'nav-item ' + (tabActive == 'home' ? 'active' : '')}}" id="home">
+                <li class="{{'nav-item ' + (tabActive == 'home' || !tabActive ? 'active' : '')}}" id="home">
                     <a class="nav-link" href="/home" ng-click="setActive($event)">Home</a>
                 </li>
                 
