@@ -13,19 +13,19 @@
             
             <ul class="navbar-nav ml-auto dynamic-margin-right">
             
-                <li class="nav-item active">
-                    <a class="nav-link" id="home" href="/home" ng-click="setActive($event)">Home</a>
+                <li class="{{'nav-item ' + (tabActive == 'home' ? 'active' : '')}}" id="home">
+                    <a class="nav-link" href="/home" ng-click="setActive($event)">Home</a>
                 </li>
                 
-                <li class="nav-item">
-                    <a class="nav-link" href="/hourly" ng-click="setActive($event)">Hourly</a>
+                <li class="{{'nav-item ' + (tabActive == 'hourly' ? 'active' : '')}}" id="hourly">
+                    <a class="nav-link" id="hourly" href="/hourly" ng-click="setActive($event)">Hourly</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="{{'nav-item ' + (tabActive == 'daily' ? 'active' : '')}}" id="daily">
                     <a class="nav-link" href="/daily" ng-click="setActive($event)">Daily</a>
                 </li>                  
 
-                <li class="nav-item">
+                <li class="{{'nav-item ' + (tabActive == 'about' ? 'active' : '')}}" id="about">
                     <a class="nav-link" href="/about" ng-click="setActive($event)">About</a>
                 </li>
             

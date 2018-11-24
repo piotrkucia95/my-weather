@@ -103,25 +103,6 @@ app.controller('HomeController', ['$scope', '$http', '$window', function($scope,
             $scope.location = response.data.city.name;
             $scope.forecastArray = response.data.list;
 
-                if($scope.forecastArray[0].weather[0].icon == '01d') $scope.switchBackground('sun-bg');
-                else if($scope.forecastArray[0].weather[0].icon == '01n') $scope.switchBackground('night-bg');
-                else if($scope.forecastArray[0].weather[0].icon == '02d') $scope.switchBackground('cloudy-sun-bg');
-                else if($scope.forecastArray[0].weather[0].icon == '02n') $scope.switchBackground('night-bg');
-                else if($scope.forecastArray[0].weather[0].icon == '03d' || 
-                        $scope.forecastArray[0].weather[0].icon == '03n' ||
-                        $scope.forecastArray[0].weather[0].icon == '04d' ||
-                        $scope.forecastArray[0].weather[0].icon == '04n') $scope.switchBackground('clouds-bg');
-                else if($scope.forecastArray[0].weather[0].icon == '09d' || 
-                        $scope.forecastArray[0].weather[0].icon == '09n') $scope.switchBackground('rain-bg');
-                else if($scope.forecastArray[0].weather[0].icon == '10d' || 
-                        $scope.forecastArray[0].weather[0].icon == '10n') $scope.switchBackground('rain-bg');
-                else if($scope.forecastArray[0].weather[0].icon == '11d' || 
-                        $scope.forecastArray[0].weather[0].icon == '11n') $scope.switchBackground('lightning-bg');
-                else if($scope.forecastArray[0].weather[0].icon == '13d'|| 
-                        $scope.forecastArray[0].weather[0].icon == '13n') $scope.switchBackground('snow-bg');
-                else if($scope.forecastArray[0].weather[0].icon == '50d'|| 
-                        $scope.forecastArray[0].weather[0].icon == '50n') $scope.switchBackground('fog-bg');
-
             for(let i=0; i<$scope.forecastArray.length; i++) {
                 if($scope.forecastArray[i].weather[0].icon == '01d') $scope.forecastArray[i].icon = '../img/weather-icons/sun.png';
                 else if($scope.forecastArray[i].weather[0].icon == '01n') $scope.forecastArray[i].icon = '../img/weather-icons/moon.png';
